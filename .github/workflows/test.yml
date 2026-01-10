@@ -1,0 +1,17 @@
+name: Test
+
+on:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Gradle Environment
+        uses: ./.github/actions/setup-gradle-env
+
+      - name: Run Tests
+        run: ./gradlew test
