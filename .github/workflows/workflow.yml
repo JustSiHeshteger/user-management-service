@@ -7,16 +7,13 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-env:
-  PIPELINE_ACTION_SHA: 7066db745875c64770e217e3e1c769dde0dfee99
-
 jobs:
   build:
     name: Build App
     runs-on: ubuntu-latest
     steps:
       - name: Build Parameters
-        uses: JustSiHeshteger/pipeline-action@${{ env.PIPELINE_SHA }}
+        uses: JustSiHeshteger/pipeline-action@7066db745875c64770e217e3e1c769dde0dfee99
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
@@ -24,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Build
-        uses: JustSiHeshteger/pipeline-action/build@${{ env.PIPELINE_SHA }}
+        uses: JustSiHeshteger/pipeline-action/build@7066db745875c64770e217e3e1c769dde0dfee99
 
   test:
     name: Test App
@@ -35,7 +32,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Test
-        uses: JustSiHeshteger/pipeline-action/test@${{ env.PIPELINE_SHA }}
+        uses: JustSiHeshteger/pipeline-action/test@7066db745875c64770e217e3e1c769dde0dfee99
 
   sonar:
     name: SonarCloud Analyze
@@ -43,7 +40,7 @@ jobs:
     needs: [build]
     steps:
       - name: Sonar Run
-        uses: JustSiHeshteger/pipeline-action/sonar@${{ env.PIPELINE_SHA }}
+        uses: JustSiHeshteger/pipeline-action/sonar@7066db745875c64770e217e3e1c769dde0dfee99
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
@@ -53,4 +50,4 @@ jobs:
     needs: [build, test, sonar]
     steps:
       - name: Run Deploy
-        uses: JustSiHeshteger/pipeline-action/deploy@${{ env.PIPELINE_SHA }}
+        uses: JustSiHeshteger/pipeline-action/deploy@7066db745875c64770e217e3e1c769dde0dfee99
