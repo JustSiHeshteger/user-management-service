@@ -1,4 +1,4 @@
-name: SonarQube
+name: CI/CD Gradle
 
 on:
   push:
@@ -9,22 +9,22 @@ on:
 
 jobs:
   build:
-    name: Build App
-    uses: ./.github/workflows/build.yml
+    name: Build and Test App
+    uses: JustSiHeshteger/pipeline-actions/build@v1
 
-  test:
-    name: Test App
-    uses: ./.github/workflows/test.yml
-    needs: build
-
-  sonarqube:
-    name: SonarCloud Analyze
-    uses: ./.github/workflows/sonarqube.yml
-    needs: build
-    secrets:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-  deploy:
-    name: Deploy App
-    uses: ./.github/workflows/deploy.yml
-    needs: [ build, test, sonarqube ]
+#  test:
+#    name: Test App
+#    uses: ./.github/workflows/test.yml
+#    needs: build
+#
+#  sonarqube:
+#    name: SonarCloud Analyze
+#    uses: ./.github/workflows/sonarqube.yml
+#    needs: build
+#    secrets:
+#      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#
+#  deploy:
+#    name: Deploy App
+#    uses: ./.github/workflows/deploy.yml
+#    needs: [ build, test, sonarqube ]
