@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    name: Build App
     runs-on: ubuntu-latest
     steps:
 #      - name: Build Parameters
