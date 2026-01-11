@@ -12,13 +12,10 @@ jobs:
     name: Build App
     runs-on: ubuntu-latest
     steps:
-#      - name: Build Parameters
-#        uses: JustSiHeshteger/pipeline-action@v1
-#        with:
-#          java_version: '21'
-#          java_distributor: 'temurin'
-#        env:
-#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Build Parameters
+        uses: JustSiHeshteger/pipeline-action@v1
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Checkout
         uses: actions/checkout@v4
