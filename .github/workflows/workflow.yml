@@ -8,6 +8,10 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
+  build_app:
+    name: Build and Test App
+    uses: JustSiHeshteger/pipeline-actions/build@v1
+
   build:
     name: Build App
     uses: ./.github/workflows/build.yml
@@ -28,7 +32,3 @@ jobs:
     name: Deploy App
     uses: ./.github/workflows/deploy.yml
     needs: [ build, test, sonarqube ]
-
-#
-#    name: Build and Test App
-#    uses: JustSiHeshteger/pipeline-actions/build@v1
