@@ -10,7 +10,7 @@ on:
 jobs:
   build_app:
     name: Build and Test App
-    uses: JustSiHeshteger/build@v1
+    uses: JustSiHeshteger/pipeline-action/build@v1
 
   build:
     name: Build App
