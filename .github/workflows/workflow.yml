@@ -38,12 +38,18 @@ jobs:
 
   sonar:
     name: SonarCloud Analyze
+    runs-on: ubuntu-latest
     needs: [build]
-    uses: JustSiHeshteger/pipeline-action/sonar@v1
-    secrets:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    steps:
+      - name: Sonar Run
+        uses: JustSiHeshteger/pipeline-action/sonar@v1
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   deploy:
     name: Deploy App
+    runs-on: ubuntu-latest
     needs: [build, test, sonar]
-    uses: JustSiHeshteger/pipeline-action/deploy@v1
+    steps:
+      - name: Run Deploy
+        uses: JustSiHeshteger/pipeline-action/deploy@v1
