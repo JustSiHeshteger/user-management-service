@@ -19,7 +19,8 @@ jobs:
           java_version: '17'
           java_distributor: 'zulu'
           working_directory: 'my_directory'
-        env: SONAR_TOKEN ${{ secrets.SONAR_TOKEN }}
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Build and Test App
         uses: JustSiHeshteger/pipeline-action/build@v1
